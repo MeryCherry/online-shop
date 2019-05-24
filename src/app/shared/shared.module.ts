@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,13 +13,19 @@ import { CarouselComponent } from './components/carousel/carousel.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AngularFireAuthModule,
     NgbModule
   ],
   exports: [
     CommonModule,
     AngularFireAuthModule,
+    FormsModule,
     CarouselComponent
+  ],
+  providers: [
+    UserService,
+    AuthService
   ]
 })
 export class SharedModule { }
