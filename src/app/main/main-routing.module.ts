@@ -7,12 +7,12 @@ import { ShoppingCartComponent } from 'app/shopping-cart/shopping-cart.component
 import { LoginComponent } from 'app/login/login.component';
 import { CheckOutComponent } from 'app/check-out/check-out.component';
 import { ProductsListComponent } from 'app/products-list/products-list.component';
-
+import { AuthGuardService as AuthGuard } from 'shared/services/authguard.service';
 
 const routes: Routes = [
-  {path: 'order-list', component: OrderListComponent},
-  {path: 'order-confirmation/:id', component: OrderConfirmationComponent},
-  {path: 'check-out', component: CheckOutComponent},
+  {path: 'order-list', component: OrderListComponent, canActivate: [AuthGuard]},
+  {path: 'order-confirmation/:id', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
+  {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   { path: '', component: ProductsListComponent },
