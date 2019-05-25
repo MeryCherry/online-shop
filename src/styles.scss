@@ -2,3 +2,8 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~font-awesome/css/font-awesome.css';
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+body{
+    font-family: 'Lato', sans-serif;
+}
