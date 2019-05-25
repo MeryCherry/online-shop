@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyCgh7amp-iUY1mNyqmLMw3v4Tgc6KYsd4k',
-    authDomain: 'tea-heaven.firebaseapp.com',
-    databaseURL: 'https://tea-heaven.firebaseio.com',
-    projectId: 'tea-heaven',
-    storageBucket: 'tea-heaven.appspot.com',
-    messagingSenderId: '654981318920',
-    appId: '1:654981318920:web:dda389e5ae05c4c2'
+    apiKey: 'AIzaSyAlj8e5zB7c23oH7fQHz1a4XAUAvARrKLs',
+    authDomain: 'tea-heaven-1a355.firebaseapp.com',
+    databaseURL: 'https://tea-heaven-1a355.firebaseio.com',
+    projectId: 'tea-heaven-1a355',
+    storageBucket: 'tea-heaven-1a355.appspot.com',
+    messagingSenderId: '70547142441',
+    appId: '1:70547142441:web:d42e7a748ac5103f'
   }
 };
