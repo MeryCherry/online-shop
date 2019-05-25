@@ -8,11 +8,11 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
 import { OrderListComponent } from './order-list/order-list.component';
 
 const routes: Routes = [
-  {path: 'order-list', component: OrderListComponent},
-  {path: 'order-confirmation/:id', component: OrderConfirmationComponent},
-  {path: 'check-out', component: CheckOutComponent},
-  {path: 'cart', component: ShoppingCartComponent},
-  {path: 'login', component: LoginComponent},
+  // {path: 'order-list', component: OrderListComponent},
+  // {path: 'order-confirmation/:id', component: OrderConfirmationComponent},
+  // {path: 'check-out', component: CheckOutComponent},
+  // {path: 'cart', component: ShoppingCartComponent},
+  // {path: 'login', component: LoginComponent},
   { path: '', component: ProductsListComponent },
   { path: '**', component: ProductsListComponent }
 ];

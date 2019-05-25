@@ -6,6 +6,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,15 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule,
     NgbModule
   ],
   exports: [
     CommonModule,
     AngularFireAuthModule,
     FormsModule,
+    NgbModule,
+    BrowserAnimationsModule,
     CarouselComponent
   ],
   providers: [

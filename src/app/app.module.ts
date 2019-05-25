@@ -1,19 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
+import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from 'environments/environment';
-import { SharedModule } from './shared/shared.module';
-import { LoginComponent } from './login/login.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { LoginComponent } from './login/login.component';
+import { MainModule } from './main/main.module';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { SharedModule } from './shared/shared.module';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -29,9 +29,9 @@ import { OrderListComponent } from './order-list/order-list.component';
   imports: [
     BrowserModule,
     SharedModule,
+    MainModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     AngularFireDatabase

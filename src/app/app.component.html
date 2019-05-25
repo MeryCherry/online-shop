@@ -1,55 +1,10 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand flex-row" routerLink="/">
-          <i class="fa fa-pagelines icon-label">Tea heaven</i>
-        </a>
-        <div class="flex-row-reverse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" routerLink="/cart">Shopping cart <span class="sr-only">(current)</span></a>
-            </li>
-            <ng-template #anonymousUser>
-             <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">
-                      <i class="fa fa-user-circle icon-label">Sign in</i>
-                    </a>
-              </li>
-            </ng-template>
-            <li *ngIf="apiUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
-                <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">{{ apiUser.name }}</a>
-                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-                  <a class="dropdown-item" routerLink="order-list">My Orders</a>
-                  <a class="dropdown-item" (click)="logout()">Log out</a>
-                </div>
-              </li>
-          </ul>
-        </div>
-    </div>
-  </nav>
+<regular-navbar></regular-navbar>
   <!-- ---------------------------------------- -->
-  <nav class="site-header sticky-top py-1">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-          viewBox="0 0 24 24" focusable="false">
-          <title>Product</title>
-          <circle cx="12" cy="12" r="10" />
-          <path
-            d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
-        </svg>
-      </a>
-      <!-- ------------For store manager----------- -->
-      <a class="py-2 d-none d-md-inline-block" href="#">Manage Products</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Manage Orders</a>
-      <!-- ------------For admin----------- -->
-      <a class="py-2 d-none d-md-inline-block" href="#">Manage Users</a>
-    </div>
-  </nav>
+  <!-- <managing-navbar></managing-navbar> -->
+
 </header>
 <main role="main" class="container-fluid">
-  <carousel-control></carousel-control>
+  <!-- <carousel-control></carousel-control> -->
   <router-outlet></router-outlet>
 </main>
