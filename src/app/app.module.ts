@@ -14,6 +14,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     BrowserModule,
     SharedModule,
     MainModule,
+    AdminModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
