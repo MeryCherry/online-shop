@@ -13,7 +13,8 @@ export class UserService {
   save( user: firebase.User) {
     this.db.object('/users/' + user.uid ).update({
       email: user.email,
-      name: user.displayName
+      name: user.displayName,
+      id: user.uid
     });
   }
   // to get user from firebase database
