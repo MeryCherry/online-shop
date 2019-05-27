@@ -3,13 +3,11 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from 'shared/shared.module';
 
 import { MainRoutingModule } from './main-routing.module';
-import { ManagingNavbarComponent } from './managing-navbar/managing-navbar.component';
 import { RegularNavbarComponent } from './regular-navbar/regular-navbar.component';
-
+import { AdminAuthGuardService as AdminGuard } from 'app/admin/services/admin-auth-guard.service';
 @NgModule({
   declarations: [
-    RegularNavbarComponent,
-    ManagingNavbarComponent
+    RegularNavbarComponent
   ],
   imports: [
     CommonModule,
@@ -17,8 +15,10 @@ import { RegularNavbarComponent } from './regular-navbar/regular-navbar.componen
     MainRoutingModule
   ],
   exports: [
-    RegularNavbarComponent,
-    ManagingNavbarComponent
+    RegularNavbarComponent
+  ],
+  providers: [
+    AdminGuard
   ]
 })
 export class MainModule { }

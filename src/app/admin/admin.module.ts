@@ -5,19 +5,24 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
 import { SharedModule } from 'shared/shared.module';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { AdminRoutingModule } from './admin-routing.module';
+import { ManagingNavbarComponent } from './components/managing-navbar/managing-navbar.component';
 
 @NgModule({
   declarations: [
     ManageProductsComponent,
     ManageUsersComponent,
-    ManageOrdersComponent
+    ManageOrdersComponent,
+    ManagingNavbarComponent
   ],
   imports: [
     SharedModule,
     AdminRoutingModule
   ],
-  providers:[
+  providers: [
     AdminAuthGuardService
+  ],
+  exports: [
+    ManagingNavbarComponent
   ]
 })
 export class AdminModule { }
