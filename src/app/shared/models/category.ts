@@ -1,7 +1,7 @@
 export interface CategoriesList{
     name: string;
     key: string;
-    type: Array<Category>;
+    types: Category[];
 } 
 export interface Category {
     name: string;

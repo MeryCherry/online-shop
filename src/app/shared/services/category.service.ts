@@ -12,7 +12,7 @@ export class CategoryService {
 
   getAll() {
     return this.db.list('/categories').snapshotChanges().pipe(
-  switchMap((categ) => {
+     map((categ) => {
     return categ.map(c => ({ key: c.payload.key, name: c.payload.val()['name'], types: c.payload.val()['types']}));
   }));
 
