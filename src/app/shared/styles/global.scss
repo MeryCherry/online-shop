@@ -1,0 +1,15 @@
+
+$primary-color: #92c03c;
+$primary-color-hover: #b1c522;
+$secondary-color: aliceblue;
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+@mixin box-shadow {
+-webkit-box-shadow: 2px 2px 12px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 2px 12px 0px rgba(0,0,0,0.75);
+box-shadow: 2px 2px 12px 0px rgba(0,0,0,0.75);
+}
