@@ -13,19 +13,19 @@ export class RolesService {
 
   constructor(private db: AngularFireDatabase, private auth: AuthService) { }
 
-isCurrentUserAdmin() {
-  if (!this.auth.apiUser$) {
-    return;
+  isCurrentUserAdmin() {
+    if (!this.auth.apiUser$) {
+      return;
+    }
+    return this.auth.apiUser$.pipe(
+      // mapping the result, so user object to boolean
+      switchMap((appUser: User) =>  {
+        if (appUser) {
+          return this.isAdmin(appUser.id);
+        }
+        return of(null);
+      }));
   }
-  return this.auth.apiUser$.pipe(
-    // mapping the result, so user object to boolean
-    switchMap((appUser: User) =>  {
-      if (appUser) {
-        return this.isAdmin(appUser.id);
-      }
-      return of(null);
-    }));
-}
   private isAdmin(uid: string) {
     return this.db.object('/roles/admins/' + uid ).snapshotChanges().pipe(map( u => u.payload.val() === true));
   }

@@ -4,7 +4,7 @@ import { SharedModule } from 'shared/shared.module';
 
 import { MainRoutingModule } from './main-routing.module';
 import { RegularNavbarComponent } from './regular-navbar/regular-navbar.component';
-import { AdminAuthGuardService as AdminGuard } from 'app/admin/services/admin-auth-guard.service';
+
 @NgModule({
   declarations: [
     RegularNavbarComponent
@@ -16,9 +16,6 @@ import { AdminAuthGuardService as AdminGuard } from 'app/admin/services/admin-au
   ],
   exports: [
     RegularNavbarComponent
-  ],
-  providers: [
-    AdminGuard
   ]
 })
 export class MainModule { }
