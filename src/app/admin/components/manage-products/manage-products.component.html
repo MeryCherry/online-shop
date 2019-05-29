@@ -1,120 +1,41 @@
-<div class="row">
-  <div class="col-md-6">
-    <form #f="ngForm" (ngSubmit)="save(f.value)">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-          Title is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-          Price is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input #description="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text"
-          class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="categoryType">Category</label>
-        <div class="row">
-          <div class="col-md-6">
-            <select #categoryType="ngModel" [(ngModel)]="product.categoryType"
-              (change)="getSubCategories(categoryType.value)" name="categoryType" id="categoryType" class="form-control"
-              required>
-              <option *ngFor="let c of categories$ | async" [value]="c.key">
-                {{c.name}}
-              </option>
-            </select>
-            <div class="alert alert-danger" *ngIf="categoryType.touched && categoryType.invalid">
-              Description is required.
-            </div>
-          </div>
-          <div class="col-md-6">
-            <ng-container *ngIf="categoryType.value != undefined">
-              <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category"
-                class="form-control" required>
-                <option value=""></option>
-                <option *ngFor="let c of subCategories | keyvalue" [value]="c.key">
-                  {{c.value.name}}
-                </option>
-              </select>
-              <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-                Category is required.
-              </div>
-            </ng-container>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
-        <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text"
-          class="form-control" required url>
-        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-          <div *ngIf="imageUrl.errors?.required">Image URL is required.</div>
-          <div *ngIf="imageUrl.errors?.url">Please enter a valid URL.</div>
-        </div>
-      </div>
-      <button class="btn btn-primary">Save</button>
-    </form>
-  </div>
-</div>
+<p>
+    <a routerLink="/manage-products/new" class="btn primary">Create new product</a>
+</p>
+<p>
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+</p>
 
-<!-- <div class="row">
-      <div class="col-md-6">
-        <form #f="ngForm" (ngSubmit)="save(f.value)">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-              Title is required.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="price">Price</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
-              </div>
-              <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
-            </div>
-            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-              <div *ngIf="price.errors?.required">Price is required.</div>
-              <div *ngIf="price.errors?.min">Price should be zero or higher.</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="category">Category</label>
-            <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
-              <option value=""></option>
-              <option *ngFor="let c of categories$ | async" [value]="c.key">
-                {{c.name}}
-              </option>
-            </select>
-            <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-              Category is required.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="imageUrl">Image URL</label>
-            <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
-            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-              <div *ngIf="imageUrl.errors?.required">Image URL is required.</div>
-              <div *ngIf="imageUrl.errors?.url">Please enter a valid URL.</div>
-            </div>
-          </div>
-          <button class="btn btn-primary">Save</button>
-          <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-          <product-card [product]="product" [show-actions]="false"></product-card>
-      </div>
-    </div> -->
+<table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8 admin-products-data-table">
+
+    <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price | currency:'USD':true }} </td>
+    </ng-container>
+
+    <!-- edit button Column -->
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/manage-products/', element.key]"><i class="fa fa-edit">Edit</i></a>
+            <button mat-button (click)="delete(element.key)"><i class="far fa-trash-alt">Delete</i></button>
+        </td>
+        <td mat-cell *matCellDef="let element">
+
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [length]="itemCount" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<!-- <confirm-modal></confirm-modal> -->

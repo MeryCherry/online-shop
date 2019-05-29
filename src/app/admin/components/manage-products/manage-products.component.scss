@@ -1,2 +1,20 @@
 @import "shared/styles/global";
 
+table{
+    width: 100%;
+    tr.mat-header-row{
+        background-color: $primary-color2;
+        .mat-header-cell{
+            font-size: 15px;
+            font-weight: 600;
+            color: $secondary-text-color;
+        }
+    }
+}
+
+i::before{
+    padding: 5px;
+}
+.primary{
+    background-color: $primary-color2;
+}
