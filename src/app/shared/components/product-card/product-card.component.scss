@@ -1,8 +1,14 @@
 @import "shared/styles/global";
-
-form{
+.card{
     @include box-shadow;
     padding: 40px 20px;
     border-radius: 8px;
     background: $background-color;
+    .card-title{
+        color: $secondary-text-color;
+    }
+}
+.card-body{
+    text-align: center;
+
 }

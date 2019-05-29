@@ -1,8 +1,2 @@
 @import "shared/styles/global";
 
-form{
-    @include box-shadow;
-    padding: 40px 20px;
-    border-radius: 8px;
-    background: #f4f7f8;
-}

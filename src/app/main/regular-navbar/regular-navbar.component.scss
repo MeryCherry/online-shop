@@ -1,4 +1,5 @@
 @import '~font-awesome/css/font-awesome.css';
+@import "shared/styles/global";
 
 .dropdown-toggle {
     cursor:pointer;
@@ -8,5 +9,15 @@
 }
 
 .navbar{
-    background-color: #92c03c;
+    background-color: $primary-color;
+    a{
+        color: $primary-text-color !important;
+        font-weight: 550;
+    }
+    a::hover{
+        color: $primary-color-hover;
+    }
+    .nav-link{
+        color: $primary-text-color;
+    }
 }
