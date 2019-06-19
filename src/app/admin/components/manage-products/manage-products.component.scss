@@ -3,7 +3,7 @@
 table{
     width: 100%;
     tr.mat-header-row{
-        background-color: $primary-color2;
+        background-color: $accent-color;
         .mat-header-cell{
             font-size: 15px;
             font-weight: 600;
@@ -16,5 +16,9 @@ i::before{
     padding: 5px;
 }
 .primary{
-    background-color: $primary-color2;
+    background-color: $accent-color;
+}
+
+.action-buttons > *{
+    margin: 5px 10px 5px 0px;
 }
