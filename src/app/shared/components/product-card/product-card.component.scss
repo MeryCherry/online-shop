@@ -1,14 +1,46 @@
 @import "shared/styles/global";
-.card{
-    @include box-shadow;
-    padding: 40px 20px;
-    border-radius: 8px;
-    background: $background-color;
+
+.card:hover{
+    img{
+        @include box-shadow;
+    }
+    .btn {
+        @include box-shadow;
+        background-color: #20A94B;
+    }
+}
+.card {
+    border-style: none;
+    padding: 20px;
+    color:$secondary-text-color;
+    img{
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 40px;
+    }
     .card-title{
-        color: $secondary-text-color;
+        color: $accent-text-color;
+    }
+    .card-text{
+        font-size: 1.1rem;
+    }
+    .card-price{
+        font-weight: 500;
+        color: $accent-text-color;
     }
 }
 .card-body{
     text-align: center;
+    padding: 1rem;
+}
+.card-footer{
+    padding: 0;
+}
 
+.btn {
+    font-size: 1.1rem;
+    background-color: $accent-color;
+    color: white;
+    i::before{
+        padding: 10px;
+    }
 }

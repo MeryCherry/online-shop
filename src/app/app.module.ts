@@ -15,6 +15,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AdminModule } from './admin/admin.module';
+import { ProductsFilterComponent } from './products-list/products-filter/products-filter.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AdminModule } from './admin/admin.module';
     ShoppingCartComponent,
     CheckOutComponent,
     OrderConfirmationComponent,
-    OrderListComponent
+    OrderListComponent,
+    ProductsFilterComponent
   ],
   imports: [
     BrowserModule,

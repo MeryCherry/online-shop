@@ -1,0 +1,7 @@
+@import "shared/styles/global";
+
+.active{
+    background-color: $accent-color;
+    border-color: $accent-color;
+    font-weight: 600;
+}
