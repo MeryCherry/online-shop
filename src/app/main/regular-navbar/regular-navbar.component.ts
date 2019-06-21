@@ -1,7 +1,10 @@
+import { CartService } from 'shared/services/cart.service';
 import { AuthService } from 'shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'shared/models/user';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 
 
 @Component({
@@ -12,11 +15,14 @@ import { Router } from '@angular/router';
 export class RegularNavbarComponent implements OnInit {
 
   apiUser: User;
-  constructor(private auth: AuthService, private router: Router) {
+  cart$: Observable<ShoppingCart>;
+
+  constructor(private auth: AuthService, private router: Router, private cartSrvc: CartService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.auth.apiUser$.subscribe(user => { this.apiUser = user;  } );
+    this.cart$ = await this.cartSrvc.getCart();
    }
 
    logout() {

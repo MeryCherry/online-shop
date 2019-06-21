@@ -7,9 +7,9 @@
       <div class="flex-row-reverse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" routerLink="/cart">
-              <i class="fa fa-shopping-cart">
-                Shopping cart 
+            <a class="nav-link" routerLink="/cart">    
+              <i class="fa fa-shopping-cart cart-icon" matBadge=" {{ cart.TotalNumbersCount }}"
+               *ngIf="cart$ | async as cart">
               </i>
               <span class="sr-only">(current)</span>
             </a>

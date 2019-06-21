@@ -20,4 +20,12 @@
     .nav-link{
         color: $primary-text-color;
     }
+
+    .cart-icon::before{
+        font-size: 1.7rem;
+        padding: 0 10px;
+    }
+    .mat-badge-content{
+        background-color:$danger-color;
+    }
 }
