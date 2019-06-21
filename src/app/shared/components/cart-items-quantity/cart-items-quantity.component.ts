@@ -1,22 +1,26 @@
 import { CartService } from 'shared/services/cart.service';
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'shared/models/product';
 import { ShoppingCart } from 'shared/models/shopping-cart';
 
 @Component({
-  selector: 'product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.scss']
+  selector: 'cart-items-quantity',
+  templateUrl: './cart-items-quantity.component.html',
+  styleUrls: ['./cart-items-quantity.component.scss']
 })
-export class ProductCardComponent {
+export class CartItemsQuantityComponent  {
 
   @Input('product') product: Product;
-  @Input('show-actions') showActions = true;
   @Input('cart') cart: ShoppingCart;
+
   constructor(private cartSrvc: CartService) { }
 
-  addToCart() {
+  addCartItem() {
     this.cartSrvc.addToCart(this.product);
+  }
+
+  removeCartItem() {
+    this.cartSrvc.removeFromCart(this.product);
   }
 
 }

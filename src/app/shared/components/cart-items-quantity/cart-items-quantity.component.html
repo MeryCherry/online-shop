@@ -1,0 +1,9 @@
+<div class="row no-gutters">
+  <div class="col-2">
+  <button mat-mini-fab (click)="addCartItem()" class="quantity-btn">+</button>
+  </div>
+  <div class="col text-center quantity-label">{{ cart.getQuantity(product) }} in cart</div>
+  <div class="col-2">
+      <button mat-mini-fab (click)="removeCartItem()" class="quantity-btn">-</button>
+     </div>
+</div>

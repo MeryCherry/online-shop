@@ -1,0 +1,14 @@
+@import "shared/styles/global";
+
+.quantity-btn{
+border: 2px solid $accent-text-color;
+color:$accent-text-color;
+font-size: 2rem;
+font-weight: 500;
+background-color: white;
+text-align: center;
+padding: 0;
+}
+.quantity-label{
+    font-size: 1.2rem;
+}

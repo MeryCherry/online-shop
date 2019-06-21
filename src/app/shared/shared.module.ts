@@ -1,3 +1,4 @@
+import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,12 +14,14 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { MatComponentsModule } from 'app/mat-components/mat-components.module';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CartItemsQuantityComponent } from './components/cart-items-quantity/cart-items-quantity.component';
 
 @NgModule({
   declarations: [
     CarouselComponent,
     ProductCardComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    CartItemsQuantityComponent
   ],
   imports: [
     CommonModule,
@@ -37,12 +40,14 @@ import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-boots
     MatComponentsModule,
     CarouselComponent,
     ProductCardComponent,
+    CartItemsQuantityComponent,
     ConfirmModalComponent
   ],
   providers: [
     UserService,
     AuthService,
     ProductsService,
+    CartService,
     AdminGuard,
     NgbModalConfig,
     NgbModal,
