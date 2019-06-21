@@ -1,0 +1,43 @@
+@import "shared/styles/global";
+.thumbnail
+{
+    width: 80px;
+    height: 80px;
+    border-radius:100%;
+    background-size: cover;
+}
+
+.btn-container{
+    display: flex;
+    .check-out-btn{
+            direction: rtl;
+    }
+}
+.table{
+
+    td {
+     vertical-align: middle;
+     text-align: center;
+     padding: 0.5rem;
+     font-size: 1.1rem;
+    }
+   tr{
+       text-align: center;  
+    }
+}
+.remove-btn{
+    font-size: 1.4rem;
+} 
+.check-out-btn{
+    background-color:$accent-color;
+    border-color: $accent-color;
+}
+.top-container{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 5px;
+    label button{
+        display: flex;
+    }
+}
