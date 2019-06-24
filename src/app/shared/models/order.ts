@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item';
+import { ShoppingCart } from './shopping-cart';
 
 export class ShippingDetails {
 name: string;
@@ -8,13 +9,22 @@ city: string;
 phone: string;
 }
 
+export interface IOrder {
+  key: string;
+  dateCreated: number;
+  productList: any[];
+  shippingDetails: ShippingDetails;
+  }
+
 export class Order {
     dateCreated: number;
     productList: any[];
+    totalPrice: number;
 
-    constructor(public userID: string, cartItems: ShoppingCartItem[], public shippingDetails: ShippingDetails ) {
+    constructor(public userID: string, cart: ShoppingCart, public shippingDetails: ShippingDetails ) {
         this.dateCreated =  new Date().getTime();
-        this.productList = cartItems.map( i => {
+        this.totalPrice = cart.totalPrice;
+        this.productList = cart.items.map( i => {
             return {
               product: {
                 title: i.title,

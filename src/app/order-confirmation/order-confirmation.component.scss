@@ -1,0 +1,28 @@
+@import "shared/styles/global";
+
+.shipping-icon{
+    max-width: 200px;
+}
+.btn-primary{
+    background-color: $accent-color;
+    border-color: $accent-color;
+    margin-left: 40px;
+}
+.info-container{
+    text-align: center; 
+}
+.btn-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.order-summary-container{
+    border: 1px solid lightgray;
+    padding: 20px;
+    border-radius: 10px;
+}
+.order-info{
+    display: flex;
+    justify-content: center;
+}

@@ -1,3 +1,34 @@
-<p>
-  order-confirmation works!
-</p>
+<div class="info-container">
+  <h2>Your Order is on its way</h2>
+  <img src="assets/shipping-icon.png" class="shipping-icon">
+  <p>You will receive package within next 48h.</p>
+</div>
+<div class="btn-container">
+  <a routerLink="/order-list" class="btn btn-primary check-out-btn">
+    Check your orders
+  </a>
+  <a routerLink="/" class="btn btn-primary check-out-btn">
+    Continue shopping
+  </a>
+</div>
+<div *ngIf="order" class="row order-info">
+  <div class="col-5 col-offset-2">
+    <h3>Summary</h3>
+    <dl class="row order-summary-container">
+        <dt class="col-5">Ref number</dt>
+        <dd class="col-7">{{orderID}}</dd>
+        <dt class="col-5">Order date</dt>
+        <dd class="col-7">{{order.dateCreated | date}}</dd>
+        <dt class="col-5">Order total price</dt>
+        <dd class="col-7">{{ order.totalPrice | currency:'USD':true }}</dd>
+    </dl>
+  </div>
+  <div class="col-4 offset-1">
+    <h3>Shipping address</h3>
+    <dl class="row order-summary-container">
+        <dd class="col-12">{{ order.shippingDetails.name }}{{order.shippingDetails.surname }}</dd>
+        <dd class="col-12">{{ order.shippingDetails.address }}</dd>
+        <dd class="col-12">{{ order.shippingDetails.city }}</dd>
+    </dl>
+  </div>
+</div>

@@ -26,7 +26,7 @@ export class ShippingDetailsFormComponent implements OnInit, OnDestroy {
   }
 
   async sendOrder() {
-    let newOrder = new Order(this.userID, this.cart.items, this.shipping);
+    let newOrder = new Order(this.userID, this.cart, this.shipping);
     let result = await this.orderSrvc.create(newOrder);
     this.router.navigate(['/order-confirmation', result.key]);
   }

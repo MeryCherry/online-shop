@@ -14,7 +14,6 @@ export class CartService {
   async getCart() {
 
     let cartId = await this.getOrCreateCartId();
-    console.log(cartId);
     let cart = this.db.object('/shopping-carts/' + cartId).snapshotChanges().pipe(
     map((action: any) => {
     const key = action.key;
