@@ -1,0 +1,38 @@
+<h2>Shipping details</h2>
+<form class="shipping-form" #form="ngForm">
+  <mat-form-field class="form-field">
+    <input matInput placeholder="Name" #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" required>
+        <mat-error *ngIf="name.touched && name.invalid">
+            <div *ngIf="name.errors.required">Name is <strong>required</strong></div>
+        </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <input matInput placeholder="Surname" #surname="ngModel" name="surname"
+     [(ngModel)]="shipping.surname" type="text" required>
+    <mat-error *ngIf="surname.touched && surname.invalid">
+        <div *ngIf="surname.errors.required">Surname is <strong>required</strong></div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <textarea matInput placeholder="Address" name="address" #address="ngModel"
+     [(ngModel)]="shipping.address" required></textarea>
+    <mat-error *ngIf="address.touched && address.invalid">
+        <div *ngIf="address.errors.required">Address is <strong>required</strong></div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+      <input matInput placeholder="City" #city="ngModel" name="city"
+       [(ngModel)]="shipping.city" type="text" required>
+      <mat-error *ngIf="city.touched && city.invalid">
+          <div *ngIf="city.errors.required">City is <strong>required</strong></div>
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+      <input matInput placeholder="Phone" #phone="ngModel" name="phone"
+       [(ngModel)]="shipping.phone" type="text" required>
+      <mat-error *ngIf="phone.touched && phone.invalid">
+          <div *ngIf="phone.errors.required">City is <strong>required</strong></div>
+      </mat-error>
+  </mat-form-field>
+  <button [disabled]="!form.valid" (click)="sendOrder()"  mat-raised-button>Send order</button>
+</form>

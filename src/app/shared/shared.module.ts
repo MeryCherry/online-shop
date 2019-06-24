@@ -15,6 +15,7 @@ import { MatComponentsModule } from 'app/mat-components/mat-components.module';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartItemsQuantityComponent } from './components/cart-items-quantity/cart-items-quantity.component';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CartItemsQuantityComponent } from './components/cart-items-quantity/car
     AuthService,
     ProductsService,
     CartService,
+    OrderService,
     AdminGuard,
     NgbModalConfig,
     NgbModal,

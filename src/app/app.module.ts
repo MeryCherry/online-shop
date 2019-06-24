@@ -16,6 +16,8 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AdminModule } from './admin/admin.module';
 import { ProductsFilterComponent } from './products-list/products-filter/products-filter.component';
+import { ShippingDetailsFormComponent } from './shipping-details-form/shipping-details-form.component';
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ProductsFilterComponent } from './products-list/products-filter/product
     CheckOutComponent,
     OrderConfirmationComponent,
     OrderListComponent,
-    ProductsFilterComponent
+    ProductsFilterComponent,
+    ShippingDetailsFormComponent,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,
