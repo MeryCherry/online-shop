@@ -1,0 +1,28 @@
+<h3>Your order</h3>
+
+<table class="table table-borderless" *ngIf="cart">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor="let item of cart.items">
+        <td>{{item.title}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.totalPrice | currency:'USD':true }}</td>
+      </tr>
+      <tr class="row-total-price">
+        <td></td>
+        <td>
+          Total Price
+        </td>
+        <td>
+            {{cart.totalPrice | currency:'USD':true }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

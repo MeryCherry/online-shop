@@ -1,3 +1,14 @@
-<p>
-  check-out works!
-</p>
+<div class="row" *ngIf="cart$ | async as cart">
+    <div *ngIf="cart.TotalNumbersCount==0; else shipping">
+        You don't have any products in your cart yet.
+    </div>
+    <ng-template #shipping>
+    <div class="col-6">
+        <cart-summary [cart]="cart"></cart-summary>
+    </div>
+    <div class="col-6">
+        <shipping-details-form [cart]="cart"></shipping-details-form>
+    </div>
+</ng-template>
+</div>
+
