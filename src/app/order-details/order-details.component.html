@@ -1,0 +1,37 @@
+<h2 >Order details</h2>
+<div *ngIf="order" class="row order-info">
+  <div class="col-6 offset-3 details-container">
+    <div class="info-container">
+      <h3>Summary</h3>
+      <dl class="row order-summary-container">
+        <dt class="col-5">Ref number</dt>
+        <dd class="col-7">{{orderId}}</dd>
+        <dt class="col-5">Order date</dt>
+        <dd class="col-7">{{order.dateCreated | date}}</dd>
+        <dt class="col-5">Order total price</dt>
+        <dd class="col-7">{{ order.totalPrice | currency:'USD':true }}</dd>
+      </dl>
+    </div>
+    <div class="products-list info-container">
+      <h3>Products ordered</h3>
+      <dl *ngFor="let item of order.productList">
+        <dd>
+          {{item.quantity + ' X ' + item.product.title + ' ( '}}
+          {{ item.product.price | currency:'USD':true  }} )
+        </dd>
+      </dl>
+      <div class="total-price-container">
+          <dt >Total price: </dt>
+          <dd>{{ order.totalPrice | currency:'USD':true }}</dd>
+      </div>
+    </div>
+    <div>
+      <h3>Shipping address</h3>
+      <dl class="shipping-info">
+        <dd class="col-12">{{ order.shippingDetails.name }}{{order.shippingDetails.surname }}</dd>
+        <dd class="col-12">{{ order.shippingDetails.address }}</dd>
+        <dd class="col-12">{{ order.shippingDetails.city }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
