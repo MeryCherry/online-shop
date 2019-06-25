@@ -18,6 +18,7 @@ import { AdminModule } from './admin/admin.module';
 import { ProductsFilterComponent } from './products-list/products-filter/products-filter.component';
 import { ShippingDetailsFormComponent } from './shipping-details-form/shipping-details-form.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
     OrderListComponent,
     ProductsFilterComponent,
     ShippingDetailsFormComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

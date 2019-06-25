@@ -1,0 +1,37 @@
+
+.products-list-summary{
+
+}
+
+h2, h3 {
+    text-align: center;
+    padding-bottom:10px;
+}
+h3{
+    padding-top: 10px;
+}
+
+.details-container{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 20px;
+}
+dl{
+    padding: 10px;
+}
+.shipping-info{
+    text-align: center;
+}
+.products-list{
+    display: flex;
+    flex-direction: column;
+    .total-price-container{
+        justify-content: flex-end;
+    }
+    dl{
+        margin: auto;
+    }
+}
+.info-container{
+border-bottom: 1px solid lightgray;
+}
