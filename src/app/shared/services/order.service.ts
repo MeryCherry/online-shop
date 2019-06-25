@@ -1,7 +1,9 @@
 import { CartService } from './cart.service';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { AuthService } from './auth.service';
+import { of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +11,7 @@ import { map } from 'rxjs/operators';
 
 export class OrderService {
 
-    constructor(private db: AngularFireDatabase, private cartSrvc: CartService) { }
+    constructor(private db: AngularFireDatabase, private cartSrvc: CartService, private authService: AuthService ) { }
 
     getAll() {
         // we use snapshotchanges to map list and get also
@@ -28,11 +30,23 @@ export class OrderService {
     }
     
     getByUserID(userId: string) {
-         const ordersRef = this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId));
+         const ordersRef = this.db.list('/orders', ref => ref.orderByChild('userID').equalTo(userId));
          return ordersRef.snapshotChanges().pipe(map(changes => {
             return changes.map(c => ({ key: c.payload.key, ...c.payload.val()}));
         }));
     }
+    getCurrentUserOrderList()
+    {
+        return this.authService.user$.pipe
+        (switchMap(
+          user => {
+          if (user) {
+            return this.getByUserID(user.uid);
+          }
+          return of(null);
+        }));
+    }
+    
     getByID(id: string) {
         return this.db.object('/orders/' + id).snapshotChanges().pipe(map(o => {
             return { key: o.payload.key, ...o.payload.val()};

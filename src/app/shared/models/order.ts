@@ -12,6 +12,7 @@ phone: string;
 export interface IOrder {
   key: string;
   dateCreated: number;
+  totalPrice: number;
   productList: any[];
   shippingDetails: ShippingDetails;
   }
