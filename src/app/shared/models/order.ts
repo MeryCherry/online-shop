@@ -9,6 +9,12 @@ city: string;
 phone: string;
 }
 
+export enum Status {
+New = 'New', // 0
+Canceled = 'Canceled', // 1
+Shipped = 'Shipped' // 2
+}
+
 export interface IOrder {
   key: string;
   dateCreated: number;
@@ -21,9 +27,11 @@ export class Order {
     dateCreated: number;
     productList: any[];
     totalPrice: number;
+    status: string;
 
     constructor(public userID: string, cart: ShoppingCart, public shippingDetails: ShippingDetails ) {
         this.dateCreated =  new Date().getTime();
+        this.status = Status.New;
         this.totalPrice = cart.totalPrice;
         this.productList = cart.items.map( i => {
             return {
@@ -37,4 +45,5 @@ export class Order {
             };
           });
     }
+
 }

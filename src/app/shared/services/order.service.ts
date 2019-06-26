@@ -52,4 +52,12 @@ export class OrderService {
             return { key: o.payload.key, ...o.payload.val()};
         }));
    }
+
+   update(id, order) {
+    return this.db.object('/orders/' + id).update(order);
+  }
+
+   delete(orderId) {
+    return this.db.object('/orders/' + orderId).remove();
+  }
 }
