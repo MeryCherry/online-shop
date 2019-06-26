@@ -1,7 +1,4 @@
-
-.products-list-summary{
-
-}
+@import "shared/styles/global";
 
 h2, h3 {
     text-align: center;
@@ -26,7 +23,11 @@ dl{
     display: flex;
     flex-direction: column;
     .total-price-container{
-        justify-content: flex-end;
+        justify-content: center;
+        display: flex;
+        dt{
+            padding-right: 20px;
+        }
     }
     dl{
         margin: auto;
@@ -34,4 +35,13 @@ dl{
 }
 .info-container{
 border-bottom: 1px solid lightgray;
+}
+.order-summary-container {
+dt{
+    text-align: right;
+}
+}
+.btn-primary{
+    background-color: $accent-color;
+    border-color: $accent-color;
 }
