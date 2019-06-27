@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {  MatTableModule, MatSortModule, MatPaginatorModule,
-   MatIconModule, MatButtonModule, MatBadgeModule, MatInputModule, MatSelectModule } from '@angular/material';
+   MatIconModule, MatButtonModule, MatBadgeModule, MatInputModule, MatSelectModule, MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -15,7 +15,8 @@ import {  MatTableModule, MatSortModule, MatPaginatorModule,
     MatButtonModule,
     MatBadgeModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule
   ]
 })
 export class MatComponentsModule { }
