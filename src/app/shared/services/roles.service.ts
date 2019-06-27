@@ -29,4 +29,22 @@ export class RolesService {
   private isAdmin(uid: string) {
     return this.db.object('/roles/admins/' + uid ).snapshotChanges().pipe(map( u => u.payload.val() === true));
   }
+
+  getListAdmins() {
+    return this.db.list('/roles/admins' ).snapshotChanges().pipe(map(r => {
+      return r.map(c => ({ id: c.payload.key, ...c.payload.val()}));
+  }));
+  }
+
+  updateRoleAdmin(id, role) {
+    return this.db.object('/roles/admins' + id).update(role);
+  }
+
+  async AddAdmin(id: string) {
+    let result = await this.db.list('/roles/admins').push({id : true});
+    return result;
+}
+deleteAdmin(orderId) {
+  return this.db.object('/roles/admins' + orderId).remove();
+}
 }
