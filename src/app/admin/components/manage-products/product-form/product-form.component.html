@@ -1,10 +1,7 @@
 <div class="row">
     <div class="col-md-6 no-gutters">
       <form #f="ngForm" (ngSubmit)="save(f.value)">
-          <p class="h4 mb-4" *ngIf="productId; else editTitle">Create new product</p>
-          <ng-template #editTitle>
-              <p class="h4 mb-4">Edit product</p>
-            </ng-template>
+       <p class="h4 mb-4"> {{headerText}}</p> 
         <div class="form-group">
           <label for="title">Title</label>
           <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control"
@@ -37,7 +34,7 @@
                 </option>
               </select>
               <div class="alert alert-danger" *ngIf="categoryType.touched && categoryType.invalid">
-                Description is required.
+                Category is required.
               </div>
             </div>
             <div class="col-md-6">

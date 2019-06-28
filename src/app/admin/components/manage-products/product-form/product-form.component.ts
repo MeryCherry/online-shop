@@ -5,8 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { CategoriesList, Category } from 'shared/models/category';
 import { Subscription } from 'rxjs';
+import { Product } from 'shared/models/product';
 @Component({
-  selector: 'app-product-form',
+  selector: 'product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss']
 })
@@ -18,12 +19,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   product = {};
   productId;
   subscription: Subscription;
-
+  headerText = '';
   constructor(
     private productSrvc: ProductsService, 
     private route: ActivatedRoute,
     private router: Router,
-    private categorySrvc: CategoryService) { }
+    private categorySrvc: CategoryService) {}
 
   ngOnInit() {
     this.subscription = this.categorySrvc.getAll().subscribe((categories) => {
@@ -33,9 +34,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.productId = this.route.snapshot.paramMap.get('id');
     if (this.productId) {
       this.productSrvc.get(this.productId).pipe(take(1)).subscribe(
-        p => this.product = p
+        (p: Product) => {this.product = p; this.getSubCategories(p.categoryType);}
       );
+      this.headerText = 'Edit product';
     }
+     else { this.headerText = 'Create new product';  }
   }
 
       ngOnDestroy(){
