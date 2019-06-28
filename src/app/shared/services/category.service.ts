@@ -10,16 +10,10 @@ export class CategoryService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  getAll() {
+  getAll() : Observable<any[]> {
     return this.db.list('/categories').snapshotChanges().pipe(
      map((categ) => {
     return categ.map(c => ({ key: c.payload.key, name: c.payload.val()['name'], types: c.payload.val()['types']}));
   }));
-
-    // let categoryRef = this.db.list('/categories/tea', ref => ref.orderByChild('name'));
-    // return categoryRef.snapshotChanges().pipe(map(changes => {
-    //     return changes.map(c => ({ key: c.payload.key, ...c.payload.val()}));
-    // }));
-
   }
 }
