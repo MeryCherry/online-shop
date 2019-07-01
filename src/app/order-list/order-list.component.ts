@@ -1,11 +1,12 @@
 import { OrderService } from 'shared/services/order.service';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription, of } from 'rxjs';
+import { Subscription, of, forkJoin, Observable } from 'rxjs';
 import { AuthService } from 'shared/services/auth.service';
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
 import { IOrder, Status } from 'shared/models/order';
 import { RolesService } from 'shared/services/roles.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { delay, take, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'order-list',
@@ -20,6 +21,7 @@ export class OrderListComponent implements OnInit, OnDestroy  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<IOrder>;
   isAdmin: boolean;
+  isAll: boolean;
   // for managing status
   statusList = Status;
   keys = Object.keys;
@@ -33,18 +35,30 @@ export class OrderListComponent implements OnInit, OnDestroy  {
   // data table
   displayedColumns: string[] = ['date', 'totalPrice', 'status', 'view'];
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private authService: AuthService,
               private orderSrvc: OrderService,
               private rolesSrvc: RolesService) { }
 
   ngOnInit() {
-    this.subscription = this.rolesSrvc.isCurrentUserAdmin().subscribe( res =>
-      this.isAdmin = res);
-    this.subscription = this.orderSrvc.getCurrentUserOrderList().subscribe( (o: IOrder[]) => {
+    // execute multiple observables
+    // check if user is admin and if load 
+    // list for all orders
+    this.subscription = forkJoin(
+    this.route.queryParamMap.pipe(take(1)),
+    this.rolesSrvc.isCurrentUserAdmin().pipe(take(1)),
+    ).pipe(map(([params, isAdmin]) => {
+      this.isAdmin = isAdmin;
+      return (params.has('filter') && isAdmin);
+    })).pipe(switchMap(res => {
+      if (res) {
+        return this.orderSrvc.getAll();
+      }
+      return this.orderSrvc.getCurrentUserOrderList();
+    })).subscribe( (o: IOrder[]) => {
       this.orders = o;
       this.initTable(o);
-    }
-    );
+    });
   }
 
   private initTable(orders: IOrder[]) {
