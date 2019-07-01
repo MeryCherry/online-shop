@@ -5,4 +5,26 @@ form{
     padding: 40px 20px;
     border-radius: 8px;
     background: $background-color;
+
+    .form-field{
+        width: 100%;
+    }
+    .select-category-type{
+        width: 40%;
+        float: left;
+    }
+    .select-category{
+        width: 50%;
+        float: right;
+    }
+    .btn-container{
+        display: flex;
+        justify-content: flex-start;
+        .save-btn{
+            margin-right: 5%;
+        }
+        .btn-primary{
+            @include main-button;
+        }
+    }
 }
