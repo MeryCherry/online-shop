@@ -2,6 +2,7 @@ import { CartService } from './services/cart.service';
 import { ProductsService } from './services/products.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CustomFormsModule } from 'ng2-validation';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -27,6 +28,7 @@ import { OrderService } from './services/order.service';
   imports: [
     CommonModule,
     FormsModule,
+    CustomFormsModule,
     MatComponentsModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
@@ -36,6 +38,7 @@ import { OrderService } from './services/order.service';
     CommonModule,
     AngularFireAuthModule,
     FormsModule,
+    CustomFormsModule,
     NgbModule,
     BrowserAnimationsModule,
     MatComponentsModule,
