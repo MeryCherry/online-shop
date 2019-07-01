@@ -17,13 +17,15 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartItemsQuantityComponent } from './components/cart-items-quantity/cart-items-quantity.component';
 import { OrderService } from './services/order.service';
+import { InfoBoxComponent } from './components/info-box/info-box.component';
 
 @NgModule({
   declarations: [
     CarouselComponent,
     ProductCardComponent,
     ConfirmModalComponent,
-    CartItemsQuantityComponent
+    CartItemsQuantityComponent,
+    InfoBoxComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { OrderService } from './services/order.service';
     CarouselComponent,
     ProductCardComponent,
     CartItemsQuantityComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    InfoBoxComponent
   ],
   providers: [
     UserService,
