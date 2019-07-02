@@ -1,9 +1,12 @@
+@import "shared/styles/global";
+
 .icon-label::before{
 padding: 10px;
 }
 
 main{
     padding: 40px;
+    margin-top: 2rem;
 }
 header{
     margin-left:auto;
@@ -11,3 +14,5 @@ header{
     height:auto; 
     width:auto;
 }
+
+

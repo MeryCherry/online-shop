@@ -1,0 +1,33 @@
+
+@import "shared/styles/global";
+
+.container-login{
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid lightgray;
+    h2{
+        padding-bottom: 2rem;
+    }
+    button{
+        margin-bottom: 2rem;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        color:white;
+        i:before{
+            padding-right:10px;
+        }
+    }
+    .btn-google{
+        background-color: $google-red-color;
+        border-color: $google-red-color;
+    }
+    .btn-fb{
+        background-color: $facebook-color;
+        border-color: $facebook-color;
+    }
+}

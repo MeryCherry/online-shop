@@ -14,4 +14,8 @@ export class LoginComponent {
     this.auth.login();
   }
 
+  loginFb() {
+    this.auth.loginFacebook();
+  }
+
 }

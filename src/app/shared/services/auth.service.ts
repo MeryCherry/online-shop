@@ -38,6 +38,15 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
+  loginFacebook() {
+        // getting query params from url, if user got to login page
+    // from some other page, then to redirect him/her to this page after loggin
+    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+    // storing got query param in local storage
+    localStorage.setItem('returnUrl', returnUrl);
+    this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+  } 
+  
   get apiUser$(): Observable<User> {
     // switchMap, makes mapping, but it also switches
     // to new observable( inner) and forget about outer
