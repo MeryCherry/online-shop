@@ -3,12 +3,15 @@
 table{
     width: 100%;
     tr.mat-header-row{
-        background-color: $accent-color;
+        background-color: $accent-color2;
         .mat-header-cell{
             font-size: 15px;
             font-weight: 600;
             color: $secondary-text-color;
         }
+    }
+    .mat-row:hover{
+        background-color:aliceblue; 
     }
 }
 
@@ -16,7 +19,7 @@ i::before{
     padding: 5px;
 }
 .primary{
-    background-color: $accent-color;
+    background-color: $accent-color2;
 }
 
 .action-buttons > *{

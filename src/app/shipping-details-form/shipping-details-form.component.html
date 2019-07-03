@@ -34,5 +34,5 @@
           <div *ngIf="phone.errors.required">City is <strong>required</strong></div>
       </mat-error>
   </mat-form-field>
-  <button [disabled]="!form.valid" (click)="sendOrder()"  mat-raised-button>Send order</button>
+  <button [disabled]="!form.valid" (click)="sendOrder()" class="confirm-btn"  mat-raised-button>Send order</button>
 </form>

@@ -1,4 +1,4 @@
-<div class="row" *ngIf="cart$ | async as cart">
+<div class="row main-container" *ngIf="cart$ | async as cart">
     <div *ngIf="cart.TotalNumbersCount==0; else shipping">
         You don't have any products in your cart yet.
     </div>

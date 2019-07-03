@@ -1,36 +1,52 @@
 @import "shared/styles/global";
 
 .card:hover{
-    img{
-        @include box-shadow;
+    .image-container{
+        // @include box-shadow;
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+    .card-title{
+        color: $accent-hover-color;
     }
     .btn {
         @include box-shadow;
-        background-color: #20A94B;
+        background-color: $accent-hover-color;
     }
 }
 .card {
     border-style: none;
     padding: 20px;
     color:$secondary-text-color;
+    height: 370px;
+    .image-container{
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
     img{
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 40px;
+        //height: 10rem;
     }
     .card-title{
         color: $accent-text-color;
     }
     .card-text{
-        font-size: 1.1rem;
+        font-size: 0.9rem;
+        margin-bottom:0.5rem;
     }
     .card-price{
         font-weight: 600;
         color: $accent-text-color;
+        margin-bottom:0.5rem;
     }
 }
 .card-body{
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem 0rem;
+    h3{
+        font-size: 1.4rem;
+    }
 }
 .card-footer{
     padding: 0;

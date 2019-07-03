@@ -10,6 +10,7 @@
 }
 .info-container{
     text-align: center; 
+    padding-top: 10px;
 }
 .btn-container{
     display:flex;
@@ -21,8 +22,12 @@
     border: 1px solid lightgray;
     padding: 20px;
     border-radius: 10px;
+    height: 150px;
 }
 .order-info{
     display: flex;
     justify-content: center;
+}
+dd{
+    font-size: 0.9rem;
 }

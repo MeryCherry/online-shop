@@ -62,12 +62,11 @@ isAdmin(id: string) {
   return (this.admins.find(x => x.id === id) !== undefined);
 }
 delete(id) {
-  if (!confirm('Are you sure you want to delete this order?')) {return; }
+  if (!confirm('Are you sure you want to delete this user?')) {return; }
   this.userSrvc.delete(id);
   this.router.navigate(['/manage-users']); 
 }
 save(elem){
-  console.log(elem);
 // this.rolesSrvc.updateRoleAdmin()
 // this.userSrvc.update(elem.key, elem);
 this.isEdit = !this.isEdit;

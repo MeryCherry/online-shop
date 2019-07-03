@@ -2,9 +2,17 @@
 
 .nav-wrapper{
     background-color: $secondary-color;
-
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1020;
     a{
         color: $secondary-text-color;
         font-weight: 550;
+    }
+    a:hover{
+        color: white;
+        text-decoration: none;
     }
 }
