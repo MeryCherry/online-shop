@@ -9,6 +9,8 @@
 
 .btn-container{
     display: flex;
+    justify-content: flex-end;
+    width: 100%;
     .check-out-btn{
             direction: rtl;
     }

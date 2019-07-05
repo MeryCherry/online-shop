@@ -3,7 +3,7 @@
     <a routerLink="/manage-products/new" class="btn primary">Create new product</a>
 </p>
 <ng-container *ngIf="!products || products.length ===0; else productsTable">
-    <info-box [message]="'There is no elements in list'" [type]="'info'"></info-box>
+    <ngb-alert [dismissible]="false" type="info">There is no elements in list</ngb-alert>
 </ng-container>
 <ng-template #productsTable>
     <p>

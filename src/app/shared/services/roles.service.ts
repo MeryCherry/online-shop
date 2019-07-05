@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { User } from './../models/user';
 import { AuthService } from './auth.service';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ export class RolesService {
   }
 
   updateRoleAdmin(id, role) {
-    return this.db.object('/roles/admins' + id).update(role);
+    return this.db.object('/roles/admins/' + id).update(role);
   }
 
   async AddAdmin(id: string) {

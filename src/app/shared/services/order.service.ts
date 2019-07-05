@@ -1,9 +1,10 @@
-import { CartService } from './cart.service';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { map, switchMap } from 'rxjs/operators';
-import { AuthService } from './auth.service';
 import { of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+
+import { AuthService } from './auth.service';
+import { CartService } from './cart.service';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,6 @@ export class OrderService {
         return productRef.snapshotChanges().pipe(map(changes => {
             return changes.map(c => ({ key: c.payload.key, ...c.payload.val()}));
         }));
-       // return this.db.list('/orders').valueChanges();
     }
 
     async create(order) {

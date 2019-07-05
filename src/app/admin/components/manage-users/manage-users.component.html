@@ -1,6 +1,6 @@
 <h2>Manage users</h2>
 <ng-container *ngIf="!users || users.length ===0; else userTable">
-    <info-box [message]="'There is no elements in list'" [type]="'info'"></info-box>
+    <ngb-alert [dismissible]="false" type="info">There is no elements in list</ngb-alert>
 </ng-container>
 <ng-template #userTable class="table-container">
     <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8 order-data-table">

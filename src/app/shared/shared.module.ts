@@ -1,31 +1,29 @@
-import { CartService } from './services/cart.service';
-import { ProductsService } from './services/products.service';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomFormsModule } from 'ng2-validation';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { UserService } from './services/user.service';
-import { AuthService } from './services/auth.service';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminAuthGuardService as AdminGuard } from '../admin/services/admin-auth-guard.service';
-import { ProductCardComponent } from './components/product-card/product-card.component';
+import { NgbActiveModal, NgbModal, NgbModalConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MatComponentsModule } from 'app/mat-components/mat-components.module';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
-import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CustomFormsModule } from 'ng2-validation';
+
+import { AdminAuthGuardService as AdminGuard } from '../admin/services/admin-auth-guard.service';
+import { CarouselComponent } from './components/carousel/carousel.component';
 import { CartItemsQuantityComponent } from './components/cart-items-quantity/cart-items-quantity.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { AuthService } from './services/auth.service';
+import { CartService } from './services/cart.service';
 import { OrderService } from './services/order.service';
-import { InfoBoxComponent } from './components/info-box/info-box.component';
+import { ProductsService } from './services/products.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
     CarouselComponent,
     ProductCardComponent,
     ConfirmModalComponent,
-    CartItemsQuantityComponent,
-    InfoBoxComponent
+    CartItemsQuantityComponent
   ],
   imports: [
     CommonModule,
@@ -47,8 +45,7 @@ import { InfoBoxComponent } from './components/info-box/info-box.component';
     CarouselComponent,
     ProductCardComponent,
     CartItemsQuantityComponent,
-    ConfirmModalComponent,
-    InfoBoxComponent
+    ConfirmModalComponent
   ],
   providers: [
     UserService,

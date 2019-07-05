@@ -1,12 +1,12 @@
-import { OrderService } from 'shared/services/order.service';
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription, of, forkJoin, Observable } from 'rxjs';
-import { AuthService } from 'shared/services/auth.service';
-import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin, Subscription } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { IOrder, Status } from 'shared/models/order';
+import { AuthService } from 'shared/services/auth.service';
+import { OrderService } from 'shared/services/order.service';
 import { RolesService } from 'shared/services/roles.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { delay, take, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'order-list',
@@ -44,21 +44,25 @@ export class OrderListComponent implements OnInit, OnDestroy  {
     // execute multiple observables
     // check if user is admin and if load 
     // list for all orders
-    this.subscription = forkJoin(
-    this.route.queryParamMap.pipe(take(1)),
-    this.rolesSrvc.isCurrentUserAdmin().pipe(take(1)),
-    ).pipe(map(([params, isAdmin]) => {
-      this.isAdmin = isAdmin;
-      return (params.has('filter') && isAdmin);
-    })).pipe(switchMap(res => {
-      if (res) {
-        return this.orderSrvc.getAll();
-      }
-      return this.orderSrvc.getCurrentUserOrderList();
-    })).subscribe( (o: IOrder[]) => {
+    this.subscription = this.getOrderList().subscribe( (o: IOrder[]) => {
       this.orders = o;
       this.initTable(o);
     });
+  }
+
+  private getOrderList() {
+   return forkJoin(
+      this.route.queryParamMap.pipe(take(1)),
+      this.rolesSrvc.isCurrentUserAdmin().pipe(take(1))
+      ).pipe(map(([params, isAdmin]) => {
+        this.isAdmin = isAdmin;
+        return (params.has('filter') && isAdmin);
+      })).pipe(switchMap(res => {
+        if (res) {
+          return this.orderSrvc.getAll();
+        }
+        return this.orderSrvc.getCurrentUserOrderList();
+      }));
   }
 
   private initTable(orders: IOrder[]) {

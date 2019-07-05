@@ -1,4 +1,3 @@
-import { ShoppingCartItem } from './shopping-cart-item';
 import { ShoppingCart } from './shopping-cart';
 
 export class ShippingDetails {
