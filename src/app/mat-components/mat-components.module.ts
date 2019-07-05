@@ -1,7 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {  MatTableModule, MatSortModule, MatPaginatorModule,
-   MatIconModule, MatButtonModule, MatBadgeModule, MatInputModule, MatSelectModule, MatSlideToggleModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatIconModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatSortModule,
+  MatTableModule,
+} from '@angular/material';
 
 @NgModule({
   imports: [

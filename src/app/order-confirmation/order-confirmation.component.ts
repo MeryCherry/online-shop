@@ -1,8 +1,9 @@
-import { OrderService } from './../shared/services/order.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { IOrder } from 'shared/models/order';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { IOrder } from 'shared/models/order';
+
+import { OrderService } from './../shared/services/order.service';
 
 @Component({
   selector: 'order-confirmation',
