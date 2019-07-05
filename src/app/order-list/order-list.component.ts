@@ -25,7 +25,7 @@ export class OrderListComponent implements OnInit, OnDestroy  {
   // for managing status
   statusList = Status;
   keys = Object.keys;
-  isEdit = false;
+  isEdit = -1;
   prevStatusValue;
   userID: string;
   subscription: Subscription;
@@ -77,15 +77,16 @@ export class OrderListComponent implements OnInit, OnDestroy  {
     this.orderSrvc.delete(id);
     this.router.navigate(['/order-list']); 
 }
-save(elem){
+save(elem, index){
   this.orderSrvc.update(elem.key, elem);
-  this.isEdit = !this.isEdit;
+  this.isEdit = -1;
 }
   cancel(elem){
     elem.status = this.prevStatusValue;
-    this.isEdit = !this.isEdit;
+    this.isEdit = -1;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
 }

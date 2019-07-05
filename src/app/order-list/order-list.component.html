@@ -22,8 +22,8 @@
         <!-- Status Column -->
         <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-form-field *ngIf="isAdmin && isEdit; else statusLabel ">
+            <td mat-cell *matCellDef="let element; let i = index">
+                <mat-form-field *ngIf="isAdmin && isEdit==i; else statusLabel ">
                     <select matNativeControl [(ngModel)]="element.status">
                         <option *ngFor="let status of keys(statusList)" [ngValue]="statusList[status]">{{status}}
                         </option>
@@ -37,12 +37,12 @@
         <!-- edit button Column -->
         <ng-container matColumnDef="view">
             <th mat-header-cell *matHeaderCellDef>Actions</th>
-            <td mat-cell *matCellDef="let element" class="action-buttons">
-                <a *ngIf="!isEdit" mat-mini-fab color="primary" [routerLink]="['/order-details/', element.key]">
+            <td mat-cell *matCellDef="let element; let i = index" class="action-buttons">
+                <a *ngIf="isEdit!=i" mat-mini-fab color="primary" [routerLink]="['/order-details/', element.key]">
                     <i class="fa fa-sign-in"></i>
                 </a>
-                <ng-container *ngIf="isAdmin && !isEdit; else editTemplate">
-                    <button mat-mini-fab color="warn" (click)="prevStatusValue = element.status;isEdit=!isEdit">
+                <ng-container *ngIf="isAdmin && isEdit!=i; else editTemplate">
+                    <button mat-mini-fab color="warn" (click)="prevStatusValue = element.status;isEdit=i">
                         <i class="fa fa-edit"></i>
                     </button>
                     <button mat-mini-fab color="basic" (click)="delete(element.key)">
@@ -50,7 +50,7 @@
                     </button>
                 </ng-container>
                 <ng-template #editTemplate>
-                    <button mat-mini-fab color="primary" (click)="save(element)"><i class="fa fa-save"></i></button>
+                    <button mat-mini-fab color="primary" (click)="save(element,i)"><i class="fa fa-save"></i></button>
                     <button mat-mini-fab color="warn" (click)="cancel(element)"><i
                             class="fa fa-window-close"></i></button>
                 </ng-template>
