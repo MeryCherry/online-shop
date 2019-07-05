@@ -17,13 +17,15 @@ import { CartService } from './services/cart.service';
 import { OrderService } from './services/order.service';
 import { ProductsService } from './services/products.service';
 import { UserService } from './services/user.service';
+import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 
 @NgModule({
   declarations: [
     CarouselComponent,
     ProductCardComponent,
     ConfirmModalComponent,
-    CartItemsQuantityComponent
+    CartItemsQuantityComponent,
+    ActionButtonsComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { UserService } from './services/user.service';
     CarouselComponent,
     ProductCardComponent,
     CartItemsQuantityComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    ActionButtonsComponent
   ],
   providers: [
     UserService,

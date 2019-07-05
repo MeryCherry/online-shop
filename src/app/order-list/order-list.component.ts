@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subscription } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { IOrder, Status } from 'shared/models/order';
-import { AuthService } from 'shared/services/auth.service';
 import { OrderService } from 'shared/services/order.service';
 import { RolesService } from 'shared/services/roles.service';
 
@@ -36,7 +35,6 @@ export class OrderListComponent implements OnInit, OnDestroy  {
   displayedColumns: string[] = ['date', 'totalPrice', 'status', 'view'];
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private authService: AuthService,
               private orderSrvc: OrderService,
               private rolesSrvc: RolesService) { }
 
@@ -72,19 +70,25 @@ export class OrderListComponent implements OnInit, OnDestroy  {
     this.dataSource.sort = this.sort;
     this.itemCount = this.dataSource.data.length;
 }
-  delete(id) {
-    if (!confirm('Are you sure you want to delete this order?')) {return; }
-    this.orderSrvc.delete(id);
-    this.router.navigate(['/order-list']); 
+
+delete(elem){
+  if (!confirm('Are you sure you want to delete this order?')) {return; }
+  this.orderSrvc.delete(elem.key);
+  this.router.navigate(['/order-list']); 
 }
-save(elem, index){
+save(elem){
   this.orderSrvc.update(elem.key, elem);
   this.isEdit = -1;
 }
-  cancel(elem){
-    elem.status = this.prevStatusValue;
-    this.isEdit = -1;
-  }
+cancel(elem){
+  elem.status = this.prevStatusValue;
+  this.isEdit = -1;
+}
+edit(elem){
+  this.prevStatusValue = elem.element.status;
+  this.isEdit = elem.index;
+
+}
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

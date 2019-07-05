@@ -1,0 +1,14 @@
+<ng-container class="action-buttons">
+  <ng-container *ngIf="isAdmin && isEdit!=i; else editTemplate">
+    <button mat-mini-fab color="warn" (click)="edit()">
+      <i class="fa fa-edit"></i>
+    </button>
+    <button mat-mini-fab color="basic" (click)="delete()">
+      <i class="fa fa-trash"></i>
+    </button>
+  </ng-container>
+  <ng-template #editTemplate>
+    <button mat-mini-fab color="primary" (click)="save()"><i class="fa fa-save"></i></button>
+    <button mat-mini-fab color="warn" (click)="cancel()"><i class="fa fa-window-close"></i></button>
+  </ng-template>
+</ng-container>
