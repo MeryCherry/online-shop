@@ -24,12 +24,17 @@
     .image-container{
         padding-top: 10px;
         padding-bottom: 0px;
+        max-height: 15rem;
+        max-width: 15rem;
+        margin-left: auto;
+        margin-right: auto;
     }
     img{
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 40px;
-        height: 8rem;
-        width: auto;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
     }
     .card-title{
         color: $accent-text-color;
@@ -72,6 +77,45 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+:host.limited-display {
 
-  }
+    @media only screen and (min-width: 768px) {
+        .card{
+            img{
+                height: 8rem;
+                width: auto;
+    
+            }
+        }
+    }
+}
+
+:host.full-display {
+    @media only screen and (min-width: 768px) {
+        .card{
+            margin-left: 0;
+            .image-container{
+                max-height: 100%;
+            }
+            img{
+                height: 100%;
+                width: 100%;    
+            }
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .card{
+            margin-top: 20px;
+            .image-container{
+                max-height: 100%;
+                max-width: 100%;
+                margin-top: 40px;
+            }
+            img{
+                height: 100%;
+                width: 100%;    
+            }
+        }
+
+    }
+}

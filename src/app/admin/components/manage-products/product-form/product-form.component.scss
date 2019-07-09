@@ -35,3 +35,13 @@ form{
 .card-image{
     height: 100%;
 }
+
+@media only screen and (min-width: 768px) {
+    .card {
+
+        img{
+            height: 100% !important;
+            width: 100% !important;
+        }
+    }
+  }

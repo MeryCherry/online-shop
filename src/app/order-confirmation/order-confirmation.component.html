@@ -12,18 +12,18 @@
   </a>
 </div>
 <div *ngIf="order" class="row order-info">
-  <div class="col-5 col-offset-2">
+  <div class="col-md-5 col-offset-2 col-sm-12">
     <h3>Summary</h3>
     <dl class="row order-summary-container">
-        <dt class="col-5">Ref number</dt>
-        <dd class="col-7">{{orderID}}</dd>
-        <dt class="col-5">Order date</dt>
-        <dd class="col-7">{{order.dateCreated | date}}</dd>
-        <dt class="col-5">Order total price</dt>
-        <dd class="col-7">{{ order.totalPrice | currency:'USD':true }}</dd>
+        <dt class="col-sm-5 col-12">Ref number</dt>
+        <dd class="col-sm-7 col-12">{{orderID}}</dd>
+        <dt class="col-sm-5 col-12">Order date</dt>
+        <dd class="col-sm-7 col-12">{{order.dateCreated | date}}</dd>
+        <dt class="col-sm-5 col-12">Order total price</dt>
+        <dd class="col-sm-7 col-12">{{ order.totalPrice | currency:'USD':true }}</dd>
     </dl>
   </div>
-  <div class="col-4 offset-1">
+  <div class="col-md-4 offset-md-1 col-sm-12">
     <h3>Shipping address</h3>
     <dl class="row order-summary-container">
         <dd class="col-12">{{ order.shippingDetails.name +" " }}{{order.shippingDetails.surname }}</dd>
